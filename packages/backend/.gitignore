@@ -1,0 +1,11 @@
+.env.local
+
+# Convex generated files
+_generated/
+
+# Don't commit any compiled JS files in convex directory
+convex/**/*.js
+!convex/_generated/**/*.js
+convex/**/*.d.ts
+convex/**/*.js.map
+convex/**/*.d.ts.map
