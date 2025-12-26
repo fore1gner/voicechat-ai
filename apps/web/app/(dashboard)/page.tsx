@@ -11,15 +11,12 @@ export default function Page() {
   return (
     <>
 
-        <div className="flex flex-col items-center justify-center min-h-screen py-2">
-          <p>apps/web</p>
-          <div className="mt-4 flex item-center flex-col gap-2 justify-center  p-4">
-            {JSON.stringify(users, null, 2)}
+        <div className="p-8">
             <UserButton />
             <OrganizationSwitcher hidePersonal />
             <Button onClick={() => addUser()}>Add User</Button>
-          </div>
-        </div>
+        </div>  
+
 
     </>
   ) 
