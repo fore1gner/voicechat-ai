@@ -3,6 +3,7 @@ import { OrganizationSwitcher, UserButton } from "@clerk/nextjs"
 import { InboxIcon, LibraryBigIcon, LayoutDashboardIcon, MicIcon, PaletteIcon, CreditCardIcon } from "lucide-react"
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarRail } from "@workspace/ui/components/sidebar"
 import { usePathname } from "next/navigation"
+import { cn } from "@workspace/ui/lib/utils"
 
 const customerSupportItems = [
     {
@@ -90,6 +91,9 @@ export const DashboardSidebar = () => {
                                         asChild
                                         isActive={isActive(item.url)}
                                         tooltip={item.title}
+                                        className={cn(
+                                            isActive(item.url) && "bg-gradient-to-b from-[#0b63f3] to-[#0b63f3] text-sidebar-primary-foreground hover:to-[#0b63f3]/90",
+                                        )}
                                     >
                                         <a href={item.url}>
                                             <item.icon className="size-4" />
