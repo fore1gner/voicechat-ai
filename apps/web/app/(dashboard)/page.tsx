@@ -11,7 +11,7 @@ export default function Page() {
   return (
     <>
 
-        <div className="p-8">
+        <div className="flex flex-col items-center justify-center min-h-screen py-2">
             <UserButton />
             <OrganizationSwitcher hidePersonal />
             <Button onClick={() => addUser()}>Add User</Button>
