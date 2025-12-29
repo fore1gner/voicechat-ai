@@ -8,6 +8,8 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "@workspace/
 import { api } from "@workspace/backend/_generated/api";
 import { useMutation } from "convex/react";
 import { Doc } from "@workspace/backend/_generated/dataModel";
+import { contactSessionIdAtomFamily, organizationIdAtom } from "../../atoms/widget-atoms";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 
 const formSchema = z.object({
     name: z.string().min(1, "Name is required"),
@@ -16,6 +18,11 @@ const formSchema = z.object({
 const organizationId = "some-org-id"; // This should come from props or context
 
 export const WidgetAuthScreen = () => {
+
+    const organizationId = useAtomValue(organizationIdAtom);
+    const setContactSessionId = useSetAtom(contactSessionIdAtomFamily(organizationId || ""));
+
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -52,7 +59,7 @@ export const WidgetAuthScreen = () => {
             organizationId,
             metadata,
         });
-        console.log("Created contact session with ID:", contactSessionId);
+        setContactSessionId(contactSessionId);
     };
 
     
